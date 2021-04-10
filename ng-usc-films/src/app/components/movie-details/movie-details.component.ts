@@ -269,9 +269,9 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
       document.getElementById('mask').style.display = 'block';
       // @ts-ignore
       document.getElementById('mask').style.background = 'rgba(0,0,0,0.6)';
-      // @ts-ignore
-      document.getElementById('cast-details-card').style.overflowY = 'scroll';
-      console.log('here');
+      // // @ts-ignore
+      // document.getElementById('cast-details-card').style.overflowY = 'scroll';
+      // console.log('here');
 
       this.postsService.getCastDetails(person).subscribe(res => {
         this.castDetails = res;
@@ -315,134 +315,245 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
 
   toggle() {
-    const addToWatchListBtn = document.getElementById('watchlist-btn');
-    // @ts-ignore
-    console.log('innerHTML: ' + addToWatchListBtn.innerHTML);
-    console.log('another: ' + 'Add to watchlist');
-    // @ts-ignore
-    console.log(typeof(addToWatchListBtn.innerHTML));
-    console.log(typeof('Add to watchlist'));
-    // @ts-ignore
-    console.log(JSON.stringify(addToWatchListBtn.innerHTML) === JSON.stringify('Add to watchlist'));
-    // @ts-ignore
-    // if (addToWatchListBtn.innerHTML === 'Add to watchlist') {
-    if (this.btnContent === 'Add to watchlist') {
-      console.log('I am here');
+    if (this.isDesktop) {
+      const addToWatchListBtn = document.getElementById('watchlist-btn');
       // @ts-ignore
-      this.addToWatchList();
-      console.log(' this.addToWatchList();');
-    } else {
+      console.log('innerHTML: ' + addToWatchListBtn.innerHTML);
+      console.log('another: ' + 'Add to watchlist');
       // @ts-ignore
-      this.removeFromWatchList();
-      console.log(' this.removeFromWatchList();\n');
+      console.log(typeof(addToWatchListBtn.innerHTML));
+      console.log(typeof('Add to watchlist'));
+      // @ts-ignore
+      console.log(JSON.stringify(addToWatchListBtn.innerHTML) === JSON.stringify('Add to watchlist'));
+      // @ts-ignore
+      // if (addToWatchListBtn.innerHTML === 'Add to watchlist') {
+      if (this.btnContent === 'Add to watchlist') {
+        console.log('I am here');
+        // @ts-ignore
+        this.addToWatchList();
+        console.log(' this.addToWatchList();');
+      } else {
+        // @ts-ignore
+        this.removeFromWatchList();
+        console.log(' this.removeFromWatchList();\n');
+      }
+    }
+    else if (this.isMobile) {
+      const addToWatchListBtn = document.getElementById('watchlist-btn2');
+      // @ts-ignore
+      console.log('innerHTML: ' + addToWatchListBtn.innerHTML);
+      console.log('another: ' + 'Add to watchlist');
+      // @ts-ignore
+      console.log(typeof(addToWatchListBtn.innerHTML));
+      console.log(typeof('Add to watchlist'));
+      // @ts-ignore
+      console.log(JSON.stringify(addToWatchListBtn.innerHTML) === JSON.stringify('Add to watchlist'));
+      // @ts-ignore
+      // if (addToWatchListBtn.innerHTML === 'Add to watchlist') {
+      if (this.btnContent === 'Add to watchlist') {
+        console.log('I am here');
+        // @ts-ignore
+        this.addToWatchList();
+        console.log(' this.addToWatchList();');
+      } else {
+        // @ts-ignore
+        this.removeFromWatchList();
+        console.log(' this.removeFromWatchList();\n');
+      }
     }
   }
 
   addToWatchList() {
-    this.myStorage.setItem(this.movieDetails.id, this.movieDetails.id);
-    const addToWatchListBtn = document.getElementById('watchlist-btn');
-    const addedAlert = document.getElementById('add-alert');
-    const removeAlert = document.getElementById('remove-alert');
-    // @ts-ignore
-    this.btnContent = 'Remove from watchlist';
-    // add to local storage
-    let watchlist = [];
-    // let flag = 'false';
-    // if there is already some in watchlist
-    if (this.myStorage) {
-      if (this.myStorage.getItem('watchlist')) {
-        // extract current watchlist
-        watchlist = JSON.parse(this.myStorage.getItem('watchlist') as string);
-        const array = [];
-        for (const one of watchlist) {
-          array.push(one);
-          // console.log(array);
-        }
-        // // tslint:disable-next-line:prefer-for-of
-        // for (let idx = 0; idx < array.length; idx++) {
-        //   // tslint:disable-next-line:radix
-        //   if (parseInt(array[idx].id) === parseInt(this.id)) {
-        //     flag = 'true';
-        //   }
-        // }
-        watchlist = array;
-      }
-    }
-    // if (flag === 'false') {
-    watchlist.unshift(`{"id": ${this.id}, "title": \"${this.title}\", "poster_path": \"${this.poster_path}\", "type": \"${this.mediaType}\"}`);
-    // }
-    this.myStorage.setItem('watchlist', JSON.stringify(watchlist));
-    console.log(window.localStorage);
-    // @ts-ignore
-    removeAlert.style.display = 'none';
-    // @ts-ignore
-    addedAlert.style.display = 'block';
-    setTimeout(() => {
+    if (this.isDesktop) {
+      this.myStorage.setItem(this.movieDetails.id, this.movieDetails.id);
+      const addToWatchListBtn = document.getElementById('watchlist-btn');
+      const addedAlert = document.getElementById('add-alert');
+      const removeAlert = document.getElementById('remove-alert');
       // @ts-ignore
-      addedAlert.style.display = 'none';
-    }, 5000);
+      this.btnContent = 'Remove from watchlist';
+      // add to local storage
+      let watchlist = [];
+      // let flag = 'false';
+      // if there is already some in watchlist
+      if (this.myStorage) {
+        if (this.myStorage.getItem('watchlist')) {
+          // extract current watchlist
+          watchlist = JSON.parse(this.myStorage.getItem('watchlist') as string);
+          const array = [];
+          for (const one of watchlist) {
+            array.push(one);
+            // console.log(array);
+          }
+          watchlist = array;
+        }
+      }
+      // if (flag === 'false') {
+      watchlist.unshift(`{"id": ${this.id}, "title": \"${this.title}\", "poster_path": \"${this.poster_path}\", "type": \"${this.mediaType}\"}`);
+      // }
+      this.myStorage.setItem('watchlist', JSON.stringify(watchlist));
+      console.log(window.localStorage);
+      // @ts-ignore
+      removeAlert.style.display = 'none';
+      // @ts-ignore
+      addedAlert.style.display = 'block';
+      setTimeout(() => {
+        // @ts-ignore
+        addedAlert.style.display = 'none';
+      }, 5000);
+    }
+    else if (this.isMobile) {
+      this.myStorage.setItem(this.movieDetails.id, this.movieDetails.id);
+      const addToWatchListBtn = document.getElementById('watchlist-btn2');
+      const addedAlert = document.getElementById('add-alert2');
+      const removeAlert = document.getElementById('remove-alert2');
+      // @ts-ignore
+      this.btnContent = 'Remove from watchlist';
+      // add to local storage
+      let watchlist = [];
+      // let flag = 'false';
+      // if there is already some in watchlist
+      if (this.myStorage) {
+        if (this.myStorage.getItem('watchlist')) {
+          // extract current watchlist
+          watchlist = JSON.parse(this.myStorage.getItem('watchlist') as string);
+          const array = [];
+          for (const one of watchlist) {
+            array.push(one);
+            // console.log(array);
+          }
+          watchlist = array;
+        }
+      }
+      // if (flag === 'false') {
+      watchlist.unshift(`{"id": ${this.id}, "title": \"${this.title}\", "poster_path": \"${this.poster_path}\", "type": \"${this.mediaType}\"}`);
+      // }
+      this.myStorage.setItem('watchlist', JSON.stringify(watchlist));
+      console.log(window.localStorage);
+      // @ts-ignore
+      removeAlert.style.display = 'none';
+      // @ts-ignore
+      addedAlert.style.display = 'block';
+      setTimeout(() => {
+        // @ts-ignore
+        addedAlert.style.display = 'none';
+      }, 5000);
+    }
   }
 
   removeFromWatchList() {
-    this.myStorage.removeItem(this.movieDetails.id);
-    const addToWatchListBtn = document.getElementById('watchlist-btn');
-    const addedAlert = document.getElementById('add-alert');
-    const removeAlert = document.getElementById('remove-alert');
-    // @ts-ignore
-    this.btnContent = 'Add to watchlist';
-    // remove from local storage
-    let watchlist = [];
-    // if there is already some continue watching
-    if (this.myStorage) {
-      if (this.myStorage.getItem('watchlist')) {
-        // check if this id exists
-        watchlist = JSON.parse(this.myStorage.getItem('watchlist') as string);
-        // console.log('[you have] ' + continueWatching);
-        const array = [];
-        for (const one of watchlist) {
-          array.push(one);
-          // console.log(array);
-        }
-        // traverse continue watching list
-        for (let idx = 0; idx < array.length; idx++) {
-          // console.log('[each one] ' + JSON.parse(array[idx]).title);
-          // console.log(parseInt(JSON.parse(array[idx]).id) === parseInt(this.id));
-          // console.log('json id ' + JSON.parse(array[idx]).id + 'type' + typeof(JSON.parse(array[idx]).id));
-          // console.log('type of ' + typeof(this.id));
-          // tslint:disable-next-line:radix
-          // @ts-ignore
-          // tslint:disable-next-line:radix
-          if (parseInt(JSON.parse(array[idx]).id) === parseInt(this.id)) {
-            // console.log('[before]' + array);
-            array.splice(idx, 1);
-            // console.log('[addToContinueWatching]' + array);
-          }
-        }
-        watchlist = array;
-      }
-    }
-    // console.log('[addToContinueWatching] ' + this.title);
-    this.myStorage.setItem('watchlist', JSON.stringify(watchlist));
-    console.log(window.localStorage);
-    // @ts-ignore
-    addedAlert.style.display = 'none';
-    // @ts-ignore
-    removeAlert.style.display = 'block';
-    setTimeout(() => {
+    if (this.isDesktop) {
+      this.myStorage.removeItem(this.movieDetails.id);
+      const addToWatchListBtn = document.getElementById('watchlist-btn');
+      const addedAlert = document.getElementById('add-alert');
+      const removeAlert = document.getElementById('remove-alert');
       // @ts-ignore
-      removeAlert.style.display = 'none';
-    }, 5000);
+      this.btnContent = 'Add to watchlist';
+      // remove from local storage
+      let watchlist = [];
+      // if there is already some continue watching
+      if (this.myStorage) {
+        if (this.myStorage.getItem('watchlist')) {
+          // check if this id exists
+          watchlist = JSON.parse(this.myStorage.getItem('watchlist') as string);
+          // console.log('[you have] ' + continueWatching);
+          const array = [];
+          for (const one of watchlist) {
+            array.push(one);
+            // console.log(array);
+          }
+          // traverse continue watching list
+          for (let idx = 0; idx < array.length; idx++) {
+            // tslint:disable-next-line:radix
+            if (parseInt(JSON.parse(array[idx]).id) === parseInt(this.id)) {
+              // console.log('[before]' + array);
+              array.splice(idx, 1);
+              // console.log('[addToContinueWatching]' + array);
+            }
+          }
+          watchlist = array;
+        }
+      }
+      // console.log('[addToContinueWatching] ' + this.title);
+      this.myStorage.setItem('watchlist', JSON.stringify(watchlist));
+      console.log(window.localStorage);
+      // @ts-ignore
+      addedAlert.style.display = 'none';
+      // @ts-ignore
+      removeAlert.style.display = 'block';
+      setTimeout(() => {
+        // @ts-ignore
+        removeAlert.style.display = 'none';
+      }, 5000);
+    }
+    else if (this.isMobile) {
+      this.myStorage.removeItem(this.movieDetails.id);
+      const addToWatchListBtn = document.getElementById('watchlist-btn2');
+      const addedAlert = document.getElementById('add-alert2');
+      const removeAlert = document.getElementById('remove-alert2');
+      // @ts-ignore
+      this.btnContent = 'Add to watchlist';
+      // remove from local storage
+      let watchlist = [];
+      // if there is already some continue watching
+      if (this.myStorage) {
+        if (this.myStorage.getItem('watchlist')) {
+          // check if this id exists
+          watchlist = JSON.parse(this.myStorage.getItem('watchlist') as string);
+          // console.log('[you have] ' + continueWatching);
+          const array = [];
+          for (const one of watchlist) {
+            array.push(one);
+            // console.log(array);
+          }
+          // traverse continue watching list
+          for (let idx = 0; idx < array.length; idx++) {
+            // tslint:disable-next-line:radix
+            if (parseInt(JSON.parse(array[idx]).id) === parseInt(this.id)) {
+              // console.log('[before]' + array);
+              array.splice(idx, 1);
+              // console.log('[addToContinueWatching]' + array);
+            }
+          }
+          watchlist = array;
+        }
+      }
+      // console.log('[addToContinueWatching] ' + this.title);
+      this.myStorage.setItem('watchlist', JSON.stringify(watchlist));
+      console.log(window.localStorage);
+      // @ts-ignore
+      addedAlert.style.display = 'none';
+      // @ts-ignore
+      removeAlert.style.display = 'block';
+      setTimeout(() => {
+        // @ts-ignore
+        removeAlert.style.display = 'none';
+      }, 5000);
+    }
   }
 
   hideAddedAlert() {
-    const addedAlert = document.getElementById('add-alert');
-    // @ts-ignore
-    addedAlert.style.display = 'none';
+    if (this.isDesktop) {
+      const addedAlert = document.getElementById('add-alert');
+      // @ts-ignore
+      addedAlert.style.display = 'none';
+    }
+    else if (this.isMobile) {
+      const addedAlert = document.getElementById('add-alert2');
+      // @ts-ignore
+      addedAlert.style.display = 'none';
+    }
   }
   hideRemovedAlert() {
-    const removeAlert = document.getElementById('remove-alert');
-    // @ts-ignore
-    removeAlert.style.display = 'none';
+    if (this.isDesktop) {
+      const removeAlert = document.getElementById('remove-alert');
+      // @ts-ignore
+      removeAlert.style.display = 'none';
+    }
+    else if (this.isMobile) {
+      const removeAlert = document.getElementById('remove-alert2');
+      // @ts-ignore
+      removeAlert.style.display = 'none';
+    }
   }
 
   // redirectTo(uri:string){

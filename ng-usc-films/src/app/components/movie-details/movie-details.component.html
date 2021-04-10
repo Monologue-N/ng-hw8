@@ -1,6 +1,6 @@
 <div class="box" *ngIf="movieDetails">
 
-  <div class="first-row-container container-fluid">
+  <div class="first-row-container container-fluid" *ngIf="isDesktop">
     <div class="youtube-container" style="width: 400px;">
       <app-video class="video" [key]="key"></app-video>
     </div>
@@ -15,8 +15,9 @@
             <p class="card-text grey-text" *ngIf="hours && minutes">&nbsp;&nbsp;{{ hours }}hrs&nbsp;{{ minutes }}mins &nbsp;</p>
           </div>
           <div class="row">
-            <div class="subtitle">Genres:</div>
-            <div class="card-text grey-text" style="display: inline" *ngIf="genres">&nbsp;{{ genres }}</div>
+            <div class="subtitle">Genres:
+              <div class="card-text grey-text" style="display: inline" *ngIf="genres">&nbsp;{{ genres }}</div>
+            </div>
           </div>
           <div class="row">
             <p>Spoken Languages:</p>
@@ -25,12 +26,6 @@
           <div id="watchlist-container" *ngIf="btnContent">
             <button id="watchlist-btn"class="btn btn-primary row" (click)="toggle()" style="font-size: 18px;">
         {{btnContent}}
-              <!--              <div *ngIf="watchlistFlag === 'true'" id="remove">-->
-<!--                  Remove from watchlist-->
-<!--              </div>-->
-<!--              <div *ngIf="watchlistFlag !== 'true'" id="add">-->
-<!--                Add to watchlist-->
-<!--              </div>-->
             </button>
 
             <div id="add-alert"  class="init alert alert-success alert-dismissible fade show" role="alert" style="margin-left: -14px; margin-top: 10px;">
@@ -52,6 +47,52 @@
       </div>
     </div>
 
+  </div>
+
+  <div *ngIf="isMobile" class="mobile-cast-details" style="text-align: center">
+    <div class="youtube-container" style="text-align: center">
+      <app-video class="video" [key]="key"></app-video>
+    </div>
+      <div class="card detail-container" *ngIf="movieDetails" style=" width: 90% !important; text-align: center; margin-left: 5%;">
+        <div class="card-body small-detail-container " style=" text-align: left;">
+          <div class="card-title row" style="font-size: 36px;">{{ movieDetails.title }}</div>
+          <p class="card-text grey-text row" style="font-style: italic; font-size: 18px;">{{ movieDetails.tagline }}</p>
+          <div class="row">
+            <p class="card-text grey-text" *ngIf="releaseYear">{{ releaseYear }}&nbsp;&nbsp;|</p>
+            <p class="card-text grey-text" style="display: inline;">&nbsp;&nbsp;&#9733; &nbsp;{{ voteAverage }}&nbsp;&nbsp;|</p>
+            <p class="card-text grey-text" *ngIf="hours && minutes" style="display: inline;">&nbsp;&nbsp;{{ hours }}hrs&nbsp;{{ minutes }}mins &nbsp;</p>
+          </div>
+          <div class="row">
+            <div class="subtitle">Genres:
+              <div class="card-text grey-text" style="display: inline;" *ngIf="genres">&nbsp;{{ genres }}</div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <p>Spoken Languages:</p>
+            <p class="card-text grey-text" *ngIf="spokenLanguages">&nbsp;{{ spokenLanguages }}</p>
+          </div>
+          <div id="watchlist-container2" *ngIf="btnContent">
+            <button id="watchlist-btn2"class="btn btn-primary row" (click)="toggle()" style="font-size: 18px;">
+              {{btnContent}}
+            </button>
+
+            <div id="add-alert2"  class="init alert alert-success alert-dismissible fade show" role="alert" style="margin-left: -14px; margin-top: 10px;">
+              Added to watchlist.
+              <button type="button" class="close" (click)="hideAddedAlert()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div id="remove-alert2"  class="init alert alert-danger alert-dismissible fade show" role="alert" style="margin-left: -14px; margin-top: 10px;">
+              Removed to watchlist.
+              <button type="button" class="close" (click)="hideRemovedAlert()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
   </div>
 
@@ -62,7 +103,7 @@
     <p class="grey-text overview" *ngIf="overview">{{ overview }}</p>
   </div>
 
-<div class="container-fluid">
+<div class="container-fluid share-container">
   <div style="display: block; margin-bottom: 40px; text-align: left;">
     <div>Share</div>
     <a class="twitter-share-button"
@@ -80,11 +121,8 @@
 
 </div>
 
-<div id="cast-details">
-  <div *ngIf="castDetails && external">
+<div id="cast-details" *ngIf="castDetails && external">
       <app-cast-details [details]="castDetails" [external]="external"></app-cast-details>
-
-  </div>
 </div>
 
 
@@ -146,7 +184,7 @@
             </div>
             <p class="card-text" style="color: gray">Written by {{review.author}} on {{review.created_at}}</p>
             <p class="card-text review-content">{{review.content}}</p>
-            <a [href]="review.url" style="margin-bottom: -10px; text-decoration: underline">Read the rest</a>
+            <a [href]="review.url" [target]="'_blank'" style="margin-bottom: -10px; text-decoration: underline">Read the rest</a>
           </div>
       </div>
     </div>
@@ -167,7 +205,7 @@
         <span>&nbsp;</span>
         <p class="card-text" style="color: gray; margin-top: 20px;">Written by {{review.author}} on {{review.created_at}}</p>
         <p class="card-text review-content">{{review.content}}</p>
-        <a [href]="review.url" style="margin-bottom: -10px; text-decoration: underline">Read the rest</a>
+        <a [href]="review.url" [target]="'_blank'" style="margin-bottom: -10px; text-decoration: underline">Read the rest</a>
       </div>
     </div>
   </div>

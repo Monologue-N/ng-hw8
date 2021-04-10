@@ -51,7 +51,7 @@ export class CastDetailsComponent implements OnInit, OnChanges {
       document.getElementById('card').style.display = 'none';
       // @ts-ignore
       // document.getElementById('layout').style.overflow = 'scroll';
-      this.elementRef.nativeElement.ownerDocument.body.style.overflow = 'scroll';
+      this.elementRef.nativeElement.ownerDocument.body.style.overflowY = 'scroll';
       // this.elementRef.nativeElement.ownerDocument.body.style = 'body::-webkit-scrollbar: { overflow: scroll; }';
       // document.getElementById('card-mask').style.
     }

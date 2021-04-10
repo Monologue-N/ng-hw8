@@ -36,6 +36,9 @@ export class NavBarComponent implements OnInit {
     document.getElementById('home').className = 'nav-link active';
     // @ts-ignore
     document.getElementById('my-list').className = 'nav-link';
+    // @ts-ignore
+    document.getElementById('navbarCollapse').className = 'collapse navbar-collapse';
+
 
   }
 
@@ -44,6 +47,8 @@ export class NavBarComponent implements OnInit {
     document.getElementById('my-list').className = 'nav-link active';
     // @ts-ignore
     document.getElementById('home').className = 'nav-link';
+    // @ts-ignore
+    document.getElementById('navbarCollapse').className = 'collapse navbar-collapse';
 
   }
 

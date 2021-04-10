@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/apple/cancanhua_cs571/ng-hw8/ng-usc-films/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /Users/apple/ng-hw8/ng-usc-films/src/polyfills.ts */"hN/g");
 
 
 /***/ }),

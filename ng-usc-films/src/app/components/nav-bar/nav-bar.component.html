@@ -25,12 +25,12 @@
       <span class="navbar-toggler-icon" style="color: darkgrey;"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <div class="navbar-nav" style="background: black; width: 100%; ">
+      <div class="navbar-nav" style="background: black; width: 100vw; margin-left: -5vw;">
         <a href="#" id="home"  class="nav-item nav-link active" (click)="toggleToHome()"  routerLink="/">Home</a>
         <a href="#" id="my-list" class="nav-item nav-link" (click)="toggleToMyList()"  routerLink="/mylist">My List</a>
       </div>
-      <div class="navbar-nav ml-auto" style="background: black; padding-bottom: 10px; width: 100%;">
-        <app-type-ahead class="nav-item nav-link"></app-type-ahead>
+      <div class="navbar-nav ml-auto" >
+        <app-type-ahead class="nav-item nav-link" style="background: black; padding-bottom: 10px; width: 100vw; margin-left: -10vw;"></app-type-ahead>
       </div>
     </div>
   </div>

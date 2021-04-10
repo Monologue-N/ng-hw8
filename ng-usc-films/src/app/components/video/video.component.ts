@@ -17,7 +17,7 @@ export class VideoComponent implements OnInit {
     const isMobile = this.breakpointObserver.isMatched('(max-width: 500px)');
     if (isMobile) {
       console.log(window.innerWidth);
-      this.playerWidth = `${window.innerWidth * 0.8}`;
+      this.playerWidth = `${window.innerWidth * 0.9}`;
       this.playerHeight = '200px';
     } else {
       this.playerWidth = '700px';

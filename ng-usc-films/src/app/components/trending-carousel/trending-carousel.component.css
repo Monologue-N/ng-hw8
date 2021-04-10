@@ -45,11 +45,13 @@
     height : 300px;
   }
 
-    ngb-carousel:hover .wrapper > a > img{
-      transform: scale(1.05);
-    }
+  ngb-carousel:hover .wrapper > a > img {
+    transform: scale(1.05);
+  }
 
-
+  .wrapper:hover {
+    cursor: pointer;
+  }
 
   .wrapper {
     height: 350px;
@@ -59,15 +61,15 @@
 
   .overlay {
     position: absolute;
-    top: 10%;
-    /*bottom: 50%;*/
+    top: 50%;
+    bottom: 50%;
     left: 0;
     right: 0;
-    height: 90%;
+    height: 50%;
     width: 100%;
     opacity: 1;
-    transition: .5s ease;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(255, 255, 255, 0));
+    /*transition: .5s ease;*/
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 30%, rgba(255, 255, 255, 0));
   }
 
   /*@media(any-pointer: coarse) {*/
@@ -81,8 +83,9 @@
     font-size: 14px;
     position: absolute;
     bottom: 50%;
-    margin-left: 10%;
-    width: 100%;
+    left: 40px;
+    /*margin-left: 10%;*/
+    width: 90%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -139,6 +142,10 @@
 
   ngb-carousel:hover .wrapper > a > img{
     transform: scale(1.05);
+  }
+
+  .wrapper:hover {
+    cursor: pointer;
   }
 
   .wrapper {

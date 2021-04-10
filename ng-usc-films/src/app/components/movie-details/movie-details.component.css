@@ -1,14 +1,14 @@
 /*mobile*/
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 500px) {
   .grey-text {
     color: darkgrey;
   }
 
   .box {
     color: white;
-    width: 90%;
-    margin-top: 50px;
-    margin-left: 5%;
+    width: 100%;
+    margin-top: 20px;
+    /*margin-left: 5%;*/
     text-align: center;
   }
 
@@ -16,16 +16,24 @@
     margin-left: -1%;
   }
 
-  .detail-container {
+  /*.detail-container {*/
+  /*  background-color: transparent;*/
+  /*  color: white;*/
+  /*  width: 90%;*/
+  /*  !*position: absolute;*!*/
+  /*  display: block;*/
+  /*  text-align: center;*/
+  /*}*/
+
+  .detail-container{
     background-color: transparent;
     color: white;
-    width: 300px;
-    /*margin-left: -40%;*/
-    display: block;
+    text-align: center;
   }
 
-  .card-title {
-    width: 300px;
+  .share-container {
+    width: 90%;
+    margin-left: 3%;
   }
 
   .detail-container > .card-body {
@@ -33,8 +41,7 @@
   }
 
   ::ng-deep .detail-container > .card-body > .card-title {
-    width: 400px;
-    font-size: 45px;
+    width: 100%;
     font-weight: normal;
   }
 
@@ -50,7 +57,7 @@
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
-    width: 400px;
+    width: 500px;
     align-content: center;
     margin-left: 100px;
   }
@@ -120,14 +127,14 @@
 
 
   .description {
-    width: 100%;
-    /*margin-left: 5%;*/
+    width: 90%;
+    margin-left: 5%;
     text-align: left;
   }
 
   .overview {
-    width: 100%;
-    /*margin-left: 5%;*/
+    width: 90%;
+    margin-left: 5%;
     text-align: justify;
   }
 
@@ -142,9 +149,9 @@
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
-    width: 300px;
+    width: 97vw;
     align-content: center;
-    margin-left: 0;
+    margin-left: 3vw;
     scrollbar-base-color: transparent;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -165,9 +172,7 @@
     border: none;
   }
   .youtube-container {
-    width: 400px;
-    text-align: left;
-    /*margin-right: 300px;*/
+    width: 100%;
   }
 
 }
@@ -178,7 +183,7 @@
 
 
 /*desktop*/
-@media only screen and (min-width: 414px) {
+@media only screen and (min-width: 500px) {
   .test {
     color: white;
     margin-top: 5%;
