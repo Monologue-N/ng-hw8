@@ -387,7 +387,7 @@
   </div>
   <div *ngIf="recommendedTvShows">
     <div *ngIf="recommendedTvShows.results.length !== 0">
-      <app-multi-carousel [data]="recommendedTvShows"></app-multi-carousel>
+      <app-tv-carousel [data]="recommendedTvShows"></app-tv-carousel>
     </div>
   </div>
 </div>
@@ -398,7 +398,7 @@
   </div>
   <div *ngIf="recommendedTvShows">
     <div *ngIf="recommendedTvShows.results.length !== 0">
-      <app-multi-carousel [data]="recommendedTvShows"></app-multi-carousel>
+      <app-tv-carousel [data]="recommendedTvShows"></app-tv-carousel>
     </div>
   </div>
 </div>
@@ -410,7 +410,7 @@
 </div>
 <div *ngIf="similarTvShows">
   <div *ngIf="similarTvShows.results.length !== 0">
-    <app-multi-carousel [data]="similarTvShows"></app-multi-carousel>
+    <app-tv-carousel [data]="similarTvShows"></app-tv-carousel>
   </div>
 </div>
 

@@ -14,8 +14,8 @@
         <div class="watchlist-wrapper" *ngFor="let one of six">
           <img class="watchlist-img" routerLink="/watch/{{one.type}}/{{one.id}}" [src]='"https://image.tmdb.org/t/p/w500" + one.poster_path' alt=""/>
           <div class="overlay">
-            <div class="text">{{one.title}}</div>
           </div>
+          <div class="text">{{one.title}}</div>
         </div>
       <hr>
     </div>

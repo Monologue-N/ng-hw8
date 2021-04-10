@@ -74,7 +74,7 @@ export class MixedCarouselComponent implements OnInit {
     // console.log(this.dataArray);
   }
 
-  reloadPage(id: any) {
-    window.location.href = `/watch/movie/${id}`;
+  reloadPage(id: any, type: any) {
+    window.location.href = `/watch/${type}/${id}`;
   }
 }
