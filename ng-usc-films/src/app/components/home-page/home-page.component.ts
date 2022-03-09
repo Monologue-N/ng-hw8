@@ -26,6 +26,8 @@ export class HomePageComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
+    // @ts-ignore
+    document.getElementById('navbarCollapse').className = 'collapse navbar-collapse';
     this.parseContinueWatching();
     this.fetchData();
   }

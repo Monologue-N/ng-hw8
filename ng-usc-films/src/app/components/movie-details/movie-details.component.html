@@ -1,27 +1,28 @@
 <div class="box" *ngIf="movieDetails">
 
-  <div class="first-row-container container-fluid" *ngIf="isDesktop">
-    <div class="youtube-container" style="width: 400px;">
+  <div class="first-row-container container-fluid" *ngIf="isDesktop" style="font-size: 18px;">
+    <div class="youtube-container col" >
       <app-video class="video" [key]="key"></app-video>
     </div>
     <div>
-      <div class="card detail-container" *ngIf="movieDetails" style="">
+      <div class="card detail-container col" *ngIf="movieDetails" style="">
         <div class="card-body">
           <h5 class="card-title row">{{ movieDetails.title }}</h5>
           <p class="card-text row grey-text" style="font-style: italic; font-size: 18px;">{{ movieDetails.tagline }}</p>
           <div class="row">
             <p class="card-text grey-text" *ngIf="releaseYear">{{ releaseYear }}&nbsp;&nbsp;|</p>
-            <p class="card-text grey-text">&nbsp;&nbsp;&#9733; &nbsp;{{ voteAverage }}&nbsp;&nbsp;|</p>
-            <p class="card-text grey-text" *ngIf="hours && minutes">&nbsp;&nbsp;{{ hours }}hrs&nbsp;{{ minutes }}mins &nbsp;</p>
+            <div class="card-text grey-text"> &nbsp;&nbsp;<div class="fa fa-star">&nbsp;</div>{{ voteAverage }}&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+            <div style="display: inline" class="card-text grey-text" *ngIf="hours && minutes">{{ hours }}hrs&nbsp;{{ minutes }}mins &nbsp;</div>
           </div>
           <div class="row">
             <div class="subtitle">Genres:
               <div class="card-text grey-text" style="display: inline" *ngIf="genres">&nbsp;{{ genres }}</div>
             </div>
           </div>
-          <div class="row">
-            <p>Spoken Languages:</p>
-            <p class="card-text grey-text" *ngIf="spokenLanguages">&nbsp;{{ spokenLanguages }}</p>
+          <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+            <div>Spoken Languages:
+              <div class="card-text grey-text" style="display: inline" *ngIf="spokenLanguages">&nbsp;{{ spokenLanguages }}</div>
+            </div>
           </div>
           <div id="watchlist-container" *ngIf="btnContent">
             <button id="watchlist-btn"class="btn btn-primary row" (click)="toggle()" style="font-size: 18px;">
@@ -57,19 +58,20 @@
         <div class="card-body small-detail-container " style=" text-align: left;">
           <div class="card-title row" style="font-size: 36px;">{{ movieDetails.title }}</div>
           <p class="card-text grey-text row" style="font-style: italic; font-size: 18px;">{{ movieDetails.tagline }}</p>
-          <div class="row">
+          <div class="row" style="font-size: 16px;">
             <p class="card-text grey-text" *ngIf="releaseYear">{{ releaseYear }}&nbsp;&nbsp;|</p>
-            <p class="card-text grey-text" style="display: inline;">&nbsp;&nbsp;&#9733; &nbsp;{{ voteAverage }}&nbsp;&nbsp;|</p>
-            <p class="card-text grey-text" *ngIf="hours && minutes" style="display: inline;">&nbsp;&nbsp;{{ hours }}hrs&nbsp;{{ minutes }}mins &nbsp;</p>
+            <div class="card-text grey-text" style="display: inline;">&nbsp;&nbsp;<div class="fa fa-star"></div> &nbsp;{{ voteAverage }}&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+            <div class="card-text grey-text" *ngIf="hours && minutes" style="display: inline;">{{ hours }}hrs&nbsp;{{ minutes }}mins &nbsp;</div>
           </div>
           <div class="row">
             <div class="subtitle">Genres:
               <div class="card-text grey-text" style="display: inline;" *ngIf="genres">&nbsp;{{ genres }}</div>
             </div>
           </div>
-          <div class="row" style="margin-top: 10px;">
-            <p>Spoken Languages:</p>
-            <p class="card-text grey-text" *ngIf="spokenLanguages">&nbsp;{{ spokenLanguages }}</p>
+          <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+            <div>Spoken Languages:
+              <div class="card-text grey-text" style="display: inline" *ngIf="spokenLanguages">&nbsp;{{ spokenLanguages }}</div>
+            </div>
           </div>
           <div id="watchlist-container2" *ngIf="btnContent">
             <button id="watchlist-btn2"class="btn btn-primary row" (click)="toggle()" style="font-size: 18px;">
@@ -98,12 +100,12 @@
 
 
 
-  <div class="container-fluid" style="display: block; margin-bottom: 20px;">
+  <div class="container-fluid" style="display: block; margin-bottom: 20px; width: 98%;">
     <div class="card-text text-white description">Description</div>
     <p class="grey-text overview" *ngIf="overview">{{ overview }}</p>
   </div>
 
-<div class="container-fluid share-container">
+<div class="container-fluid share-container" style="width: 98%">
   <div style="display: block; margin-bottom: 40px; text-align: left;">
     <div>Share</div>
     <a class="twitter-share-button"
@@ -126,7 +128,9 @@
 </div>
 
 
-<div class="full-cast-title" style="">Full Cast and Crew</div>
+<div class="full-cast-title-container">
+  <div class="full-cast-title" style="padding-left: 4%;">Full Cast and Crew</div>
+</div>
 <div class="outer-container  container-fluid" style="margin-left: -2%;">
   <div *ngIf="isDesktop">
     <div class="cast-crew-container" style="width: 1100px;">
@@ -180,7 +184,7 @@
 
           <div class="card-body" style="margin-left: 200px;">
             <div class="card-text" style="font-size: 22px; font-weight: bold; ">A review created by {{review.author}}&nbsp;&nbsp;
-            <div style="display: inline; color: white; background: black; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-weight: normal; font-size: 20px;">&#9733;&nbsp;{{review.rating}}</div>
+            <div style="display: inline; color: white; background: black; padding-left: 10px; padding-right: 10px; border-radius: 20px; font-weight: normal; font-size: 20px;"><div class="fa fa-star" >&nbsp;</div>&nbsp;{{review.rating}}</div>
             </div>
             <p class="card-text" style="color: gray">Written by {{review.author}} on {{review.created_at}}</p>
             <p class="card-text review-content">{{review.content}}</p>
@@ -227,7 +231,7 @@
 
 <div *ngIf="isDesktop">
   <div style="width: 100%; margin-left: 11%; margin-top: 100px;" class="row">
-    <div style="color: white; font-size: 36px; ">Recommended Movies</div>
+    <div style="color: white; font-size: 36px;">Recommended Movies</div>
   </div>
   <div *ngIf="recommendedMovies">
     <div *ngIf="recommendedMovies.results.length !== 0">
@@ -238,8 +242,8 @@
 
 
 
-<div style="width: 100%; margin-left: 12%; margin-top: 100px;" class="row container-fluid">
-  <div style="color: white; font-size: 36px; ">Similar Movies</div>
+<div style="width: 100%; margin-left: 10%; margin-top: 100px;" class="row container-fluid">
+  <div style="color: white; font-size: 36px;">Similar Movies</div>
 </div>
 <div *ngIf="similarMovies">
   <div *ngIf="similarMovies.results.length !== 0">

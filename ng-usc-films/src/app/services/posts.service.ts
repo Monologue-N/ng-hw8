@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// const prefix = '';
-const prefix = 'http://localhost:8080';
+const prefix = '';
+// const prefix = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'

@@ -16278,7 +16278,7 @@ body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   /*outline: 1px solid slategrey;*/
 }
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 500px) {
   body {
     overflow-x:hidden;
   }

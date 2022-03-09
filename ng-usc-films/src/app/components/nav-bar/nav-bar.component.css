@@ -113,6 +113,8 @@
     /*margin-left: 100px;*/
     /*position: fixed;*/
     margin-left: 20px;
+    width: 300px;
+    /*margin-right: 20px;*/
     background-color: transparent;
     border: transparent;
   }

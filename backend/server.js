@@ -15,7 +15,7 @@ app.use('/*', function (req, res) {
 });
 
 app.listen(8080, function() {
-    // console.log("Backend App is listening at http://localhost.8080");
+    // console.log("Backend App is listening at http://localhost:8080");
 })
 
 module.exports = app;

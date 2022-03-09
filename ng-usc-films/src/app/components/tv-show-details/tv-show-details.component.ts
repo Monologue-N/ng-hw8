@@ -46,6 +46,8 @@ export class TvShowDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isMobile = this.breakpointObserver.isMatched('(max-width: 500px)');
     this.isDesktop = this.breakpointObserver.isMatched('(min-width: 500px)');
+    // @ts-ignore
+    document.getElementById('navbarCollapse').className = 'collapse navbar-collapse';
 
     if (window.location.pathname === '/mylist') {
       // @ts-ignore
@@ -146,10 +148,27 @@ export class TvShowDetailsComponent implements OnInit, OnDestroy {
       if (this.tvShowVideos.results.length === 0 || !this.tvShowVideos.results.length) {
         this.key = 'tzkWB85ULJY';
       } else {
-        this.key = this.tvShowVideos.results[0].key;
+        for (const result of this.tvShowVideos.results) {
+          if (result.type === 'Trailer' && result.key) {
+              this.key = result.key;
+              break;
+          }
+        }
+        if (!this.key) {
+          for (const result of this.tvShowVideos.results) {
+            if (result.type === 'Teaser' && result.key) {
+              this.key = result.key;
+              break;
+            }
+          }
+        }
         if (!this.key) {
           this.key = 'tzkWB85ULJY';
         }
+        // this.key = this.tvShowVideos.results[0].key;
+        // if (!this.key) {
+        //   this.key = 'tzkWB85ULJY';
+        // }
       }
     });
     this.postsService.getTvShowCast(this.id).subscribe(res => {

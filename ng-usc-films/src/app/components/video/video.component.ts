@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
@@ -18,13 +18,14 @@ export class VideoComponent implements OnInit {
     if (isMobile) {
       console.log(window.innerWidth);
       this.playerWidth = `${window.innerWidth * 0.9}`;
-      this.playerHeight = '200px';
+      this.playerHeight = this.playerWidth * 0.55;
     } else {
-      this.playerWidth = '700px';
-      this.playerHeight = '400px';
+      this.playerWidth = `${window.innerWidth * 0.5}`;
+      this.playerHeight = this.playerWidth * 0.55;
     }
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
   }
+
 }

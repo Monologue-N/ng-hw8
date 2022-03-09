@@ -130,6 +130,11 @@
   .watchlist-wrapper:hover .watchlist-wrapper > img {
     transform: scale(1.05);
   }
+
+  .watchlist-wrapper:hover .text{
+    opacity: 1;
+  }
+
   .watchlist-wrapper:hover {
     cursor: pointer;
   }
@@ -154,14 +159,16 @@
 
   .text {
     color: white;
-    font-size: 20px;
+    font-size: 14px;
     position: absolute;
-    bottom: 2%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
+    bottom: 4%;
+    left: 7%;
+    opacity: 0;
+    transition: .5s ease;
+    /*-webkit-transform: translate(-50%, -50%);*/
+    /*-ms-transform: translate(-50%, -50%);*/
+    /*transform: translate(-50%, -50%);*/
+    text-align: left;
   }
 }
 

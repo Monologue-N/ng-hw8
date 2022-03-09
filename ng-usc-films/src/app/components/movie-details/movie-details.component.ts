@@ -48,6 +48,9 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isMobile = this.breakpointObserver.isMatched('(max-width: 500px)');
     this.isDesktop = this.breakpointObserver.isMatched('(min-width: 500px)');
+    // @ts-ignore
+    document.getElementById('navbarCollapse').className = 'collapse navbar-collapse';
+
     if (window.location.pathname === '/mylist') {
       // @ts-ignore
       document.getElementById('my-list').className = 'nav-link active';
@@ -119,6 +122,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
       this.movieDetails = res;
       this.mediaType = 'movie';
       this.title = this.movieDetails.title;
+      console.log(this.movieDetails.tagline);
       this.poster_path = this.movieDetails.poster_path;
       // tslint:disable-next-line:radix
       this.releaseYear = parseInt(this.movieDetails.release_date);
@@ -145,7 +149,20 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
       if (this.movieVideos.results.length === 0 || !this.movieVideos.results.length) {
         this.key = 'tzkWB85ULJY';
       } else {
-        this.key = this.movieVideos.results[0].key;
+        for (const result of this.movieVideos.results) {
+          if (result.type === 'Trailer' && result.key) {
+            this.key = result.key;
+            break;
+          }
+        }
+        if (!this.key) {
+          for (const result of this.movieVideos.results) {
+            if (result.type === 'Teaser' && result.key) {
+              this.key = result.key;
+              break;
+            }
+          }
+        }
         if (!this.key) {
           this.key = 'tzkWB85ULJY';
         }

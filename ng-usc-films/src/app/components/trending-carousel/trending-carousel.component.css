@@ -45,9 +45,10 @@
     height : 300px;
   }
 
-  ngb-carousel:hover .wrapper > a > img {
+  ngb-carousel:hover .wrapper > a > img{
     transform: scale(1.05);
   }
+
 
   .wrapper:hover {
     cursor: pointer;
@@ -61,15 +62,14 @@
 
   .overlay {
     position: absolute;
-    top: 50%;
+    top: 5%;
     bottom: 50%;
     left: 0;
     right: 0;
     height: 50%;
     width: 100%;
-    opacity: 1;
     /*transition: .5s ease;*/
-    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 30%, rgba(255, 255, 255, 0));
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(255, 255, 255, 0));
   }
 
   /*@media(any-pointer: coarse) {*/
@@ -83,13 +83,10 @@
     font-size: 14px;
     position: absolute;
     bottom: 50%;
-    left: 40px;
+    left: 7%;
     /*margin-left: 10%;*/
     width: 90%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: right;
+    text-align: left;
   }
 }
 
